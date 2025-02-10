@@ -22,9 +22,8 @@ public class AdminConfig implements CommandLineRunner {
     @Transactional
     public void run(String... args) throws Exception {
         var admin = adminTimeRepository.findByLogin("admin@gmail.com");
-
-        if (admin == null) { // Correção aqui
-            var novoAdmin = new AdminTime("admin@gmail.com", passwordEncoder.encode("123")); // Adiciona bcrypt na senha
+        if (admin == null) {
+            var novoAdmin = new AdminTime("admin@gmail.com", passwordEncoder.encode("123"));
             adminTimeRepository.save(novoAdmin);
             System.out.println("Admin criado com sucesso!");
         } else {

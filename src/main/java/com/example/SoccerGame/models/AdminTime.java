@@ -1,5 +1,6 @@
 package com.example.SoccerGame.models;
 
+import com.example.SoccerGame.controller.dto.CreateAdminTime;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,6 +18,7 @@ public class AdminTime implements UserDetails{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long adminId;
 
+    @Column(nullable = false, unique = true)
     private String login;
 
     private String password;
@@ -61,6 +63,11 @@ public class AdminTime implements UserDetails{
     public AdminTime(String login, String password) {
         this.login = login;
         this.password = password;
+    }
+
+    public AdminTime(CreateAdminTime dto) {
+        this.login = dto.login();
+        this.password = dto.password();
     }
 
     public Long getAdminId() {
