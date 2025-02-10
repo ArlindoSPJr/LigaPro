@@ -6,11 +6,17 @@ import com.example.SoccerGame.repository.TimeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TimeService {
 
     @Autowired
     private TimeRepository timeRepository;
+
+    public List<Time> getAllTimes() {
+        return timeRepository.findAll();
+    }
 
     public Time getTimeByName(String nomeTime){
         return timeRepository.findByNome(nomeTime);

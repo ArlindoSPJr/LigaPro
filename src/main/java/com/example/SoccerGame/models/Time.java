@@ -1,5 +1,6 @@
 package com.example.SoccerGame.models;
 
+import com.example.SoccerGame.controller.dto.CreateTimeDto;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,6 +17,10 @@ public class Time {
 
     @OneToMany
     private List<Jogador> jogadores;
+
+    public Time(CreateTimeDto dto){
+        this.nome = dto.nome();
+    }
 
     public Time() {}
 
