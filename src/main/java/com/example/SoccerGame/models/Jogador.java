@@ -1,5 +1,6 @@
 package com.example.SoccerGame.models;
 
+import com.example.SoccerGame.controller.dto.CreateJogador;
 import jakarta.persistence.*;
 
 @Entity
@@ -24,6 +25,11 @@ public class Jogador {
         this.nome = nome;
         this.email = email;
         this.estatisticas = estatisticas;
+    }
+
+    public Jogador(CreateJogador dto){
+        this.email = dto.email();
+        this.nome = dto.nome();
     }
 
     public Long getJogadorId() {
