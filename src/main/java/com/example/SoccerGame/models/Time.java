@@ -15,7 +15,7 @@ public class Time {
 
     private String nome;
 
-    @OneToMany
+    @OneToMany(mappedBy = "time", cascade = CascadeType.ALL)
     private List<Jogador> jogadores;
 
     public Time(CreateTimeDto dto){

@@ -3,8 +3,11 @@ package com.example.SoccerGame.controller;
 import com.example.SoccerGame.controller.dto.CreateJogador;
 import com.example.SoccerGame.controller.dto.DetailingJogadorDto;
 import com.example.SoccerGame.models.Jogador;
+import com.example.SoccerGame.models.Time;
 import com.example.SoccerGame.service.JogadorService;
+import com.example.SoccerGame.service.TimeService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -15,6 +18,7 @@ import java.util.List;
 public class JogadorController {
 
     private final JogadorService jogadorService;
+
 
     public JogadorController(JogadorService jogadorService) {
         this.jogadorService = jogadorService;
@@ -57,6 +61,8 @@ public class JogadorController {
         return ResponseEntity.created(uri).body(new DetailingJogadorDto(jogador));
 
     }
+
+
 
 
 }

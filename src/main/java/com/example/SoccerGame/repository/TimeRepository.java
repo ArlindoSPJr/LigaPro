@@ -11,4 +11,6 @@ public interface TimeRepository extends JpaRepository<Time, Long> {
     Time findByTimeId(Long timeId);
 
     void deleteByTimeId(long id);
+
+
 }

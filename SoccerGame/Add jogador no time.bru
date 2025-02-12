@@ -1,15 +1,21 @@
 meta {
-  name: Buscar Times
+  name: Add jogador no time
   type: http
-  seq: 7
+  seq: 11
 }
 
-get {
-  url: http://localhost:8080/time
+post {
+  url: http://localhost:8080/time/1/1
   body: none
   auth: bearer
 }
 
 auth:bearer {
   token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpc3MiOiJBZ2VuZGFtZW50b0NvbVNjaGVkdWxlIiwiaWQiOjEsImV4cCI6MTczOTI5MjQ0Mn0.5YcJn9g66AkYm1ZuUx1SQNFjeRih0lNximEfQGglERU
+}
+
+body:json {
+  {
+    "jogadorId" : "1"
+  }
 }

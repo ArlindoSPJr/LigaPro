@@ -16,6 +16,10 @@ public class Jogador {
     private String email;
 
     @ManyToOne
+    @JoinColumn(name = "time_id")
+    private Time time;
+
+    @ManyToOne
     @JoinColumn(name = "estatisticaId")
     private Estatisticas estatisticas;
 
@@ -34,6 +38,10 @@ public class Jogador {
 
     public Long getJogadorId() {
         return jogadorId;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
     }
 
     public void setJogadorId(Long jogadorId) {
