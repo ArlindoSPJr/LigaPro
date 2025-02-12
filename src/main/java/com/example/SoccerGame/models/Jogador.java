@@ -36,6 +36,10 @@ public class Jogador {
         this.nome = dto.nome();
     }
 
+    public Time getTime() {
+        return time;
+    }
+
     public Long getJogadorId() {
         return jogadorId;
     }

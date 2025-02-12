@@ -67,4 +67,11 @@ public class TimeController {
         return ResponseEntity.created(uri).body(new DetailingTimeDto(time));
     }
 
+    @DeleteMapping("/{jogadorId}")
+    public ResponseEntity deletePlayerForTeam(@PathVariable Long jogadorId) {
+        timeService.deleteJogadorForTheTeam(jogadorId);
+
+        return ResponseEntity.noContent().build();
+    }
+
 }

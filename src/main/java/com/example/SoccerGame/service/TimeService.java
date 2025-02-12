@@ -53,6 +53,21 @@ public class TimeService {
         return time;
     }
 
+    @Transactional
+    public Time deleteJogadorForTheTeam(Long jogadorId){
+        Jogador jogadorEncontrado = jogadorRepository.findByJogadorId(jogadorId);
+        Time time = jogadorEncontrado.getTime();
 
+        if (time != null) {
+            // Remover apenas o jogador específico da lista
+            time.getJogadores().removeIf(j -> j.getJogadorId().equals(jogadorId));
+
+            // Também é necessário remover a referência ao time no jogador
+            jogadorEncontrado.setTime(null);
+            jogadorRepository.save(jogadorEncontrado);
+        }
+
+        return time;
+    }
 
 }

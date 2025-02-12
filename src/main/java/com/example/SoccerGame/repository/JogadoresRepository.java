@@ -10,4 +10,5 @@ public interface JogadoresRepository extends JpaRepository<Jogador, Long> {
     Jogador findByJogadorId(Long id);
 
     Jogador findByNome(String name);
+
 }
