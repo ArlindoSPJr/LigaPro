@@ -1,6 +1,8 @@
 package com.example.SoccerGame.models;
 
 import com.example.SoccerGame.controller.dto.CreateJogador;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,8 +17,9 @@ public class Jogador {
 
     private String email;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "time_id")
+    @JsonBackReference //Colocada no lado "filho" da relação. Esse lado não será serializado, evitando o ciclo.
     private Time time;
 
     @ManyToOne

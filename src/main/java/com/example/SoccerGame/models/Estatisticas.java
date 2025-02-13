@@ -18,7 +18,7 @@ public class Estatisticas {
 
     private int assistencias;
 
-    private Estatisticas() {}
+    public Estatisticas() {}
 
     public Estatisticas(Jogador jogador, int gols, int assistencias) {
         this.jogador = jogador;

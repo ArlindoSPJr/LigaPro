@@ -1,6 +1,7 @@
 package com.example.SoccerGame.models;
 
 import com.example.SoccerGame.controller.dto.CreateTimeDto;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class Time {
     private String nome;
 
     @OneToMany(mappedBy = "time", cascade = CascadeType.ALL)
+    @JsonManagedReference //Colocada no lado "pai" da relação. Esse lado será serializado normalmente.
     private List<Jogador> jogadores;
 
     public Time(CreateTimeDto dto){
