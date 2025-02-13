@@ -47,7 +47,7 @@ public class Estatisticas {
     }
 
     public void setGols(int gols) {
-        this.gols = gols;
+        this.gols += gols;
     }
 
     public int getAssistencias() {
@@ -55,6 +55,6 @@ public class Estatisticas {
     }
 
     public void setAssistencias(int assistencias) {
-        this.assistencias = assistencias;
+        this.assistencias += assistencias;
     }
 }
