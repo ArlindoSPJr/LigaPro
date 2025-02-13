@@ -22,11 +22,14 @@ public class Jogador {
     @JsonBackReference //Colocada no lado "filho" da relação. Esse lado não será serializado, evitando o ciclo.
     private Time time;
 
-    @ManyToOne
-    @JoinColumn(name = "estatisticaId")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "estatisticas_id", referencedColumnName = "estatisticaId")
     private Estatisticas estatisticas;
 
-    public Jogador() {}
+
+    public Jogador() {
+        this.estatisticas = new Estatisticas();
+    }
 
     public Jogador(String nome, String email, Estatisticas estatisticas) {
         this.nome = nome;

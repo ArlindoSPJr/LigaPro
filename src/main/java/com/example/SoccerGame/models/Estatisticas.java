@@ -10,9 +10,9 @@ public class Estatisticas {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long estatisticaId;
 
-    @ManyToOne
-    @JoinColumn(name = "jogadorId")
+    @OneToOne(mappedBy = "estatisticas")
     private Jogador jogador;
+
 
     private int gols;
 

@@ -1,0 +1,22 @@
+meta {
+  name: Add estatisticas
+  type: http
+  seq: 13
+}
+
+post {
+  url: http://localhost:8080/estatistica/1
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpc3MiOiJBZ2VuZGFtZW50b0NvbVNjaGVkdWxlIiwiaWQiOjEsImV4cCI6MTczOTQ5NjMzM30.I56Uucn-4WXg9liIV1F-W1zBBUfKTKBtazcxyNibNWk
+}
+
+body:json {
+  {
+    "gol" : 2,
+    "assistencia" : 1
+  }
+}
