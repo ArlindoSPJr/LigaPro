@@ -1,5 +1,6 @@
 package com.example.SoccerGame.models;
 
+import com.example.SoccerGame.controller.dto.CreatePartidaDto;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -16,6 +17,34 @@ public class Partida {
     private LocalDate data;
 
     private LocalTime hora;
+
+    public Partida() {}
+
+    public Partida(Time timeMandante, Time timeVisitante, CreatePartidaDto dto){
+        this.timeMandante = timeMandante;
+        this.timeVisitante = timeVisitante;
+        this.data = dto.data();
+        this.hora = dto.hora();
+    }
+
+    public Partida(Time timeVisitante, Time timeMandante, LocalTime hora, LocalDate data) {
+        this.timeVisitante = timeVisitante;
+        this.timeMandante = timeMandante;
+        this.hora = hora;
+        this.data = data;
+    }
+
+    public Long getPartidaId() {
+        return partidaId;
+    }
+
+    public LocalDate getData() {
+        return data;
+    }
+
+    public LocalTime getHora() {
+        return hora;
+    }
 
     @ManyToOne
     @JoinColumn(name = "time_mandante_time_id")
