@@ -4,8 +4,21 @@ meta {
   seq: 17
 }
 
-get {
+post {
   url: http://localhost:8080/partida
-  body: none
-  auth: none
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpc3MiOiJBZ2VuZGFtZW50b0NvbVNjaGVkdWxlIiwiaWQiOjEsImV4cCI6MTczOTU2NDI5N30.zW8bea_j2dkBGxm9Bme8oy2Q8IlthNEG-zHhrSFBV5k
+}
+
+body:json {
+  {
+    "timeMandante" : "time A",
+    "timeVisitante" : "time B",
+    "data" : "2025-02-14",
+    "hora" : "16:00"
+  }
 }
