@@ -1,8 +1,11 @@
 package com.example.SoccerGame.models;
 
+import com.example.SoccerGame.controller.dto.CreateCampeonatoDto;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "campeonato")
@@ -18,12 +21,16 @@ public class Campeonato {
 
     private LocalDate dataDeFim;
 
+    @OneToMany(mappedBy = "campeonato", cascade = CascadeType.ALL)
+    @JsonManagedReference //Colocada no lado "pai" da relação. Esse lado será serializado normalmente.
+    private List<Partida> partidas;
+
     public Campeonato() {}
 
-    public Campeonato(String nome, LocalDate dataDeInicio, LocalDate dataDeFim) {
-        this.nome = nome;
-        this.dataDeInicio = dataDeInicio;
-        this.dataDeFim = dataDeFim;
+    public Campeonato(CreateCampeonatoDto dto){
+        this.nome = dto.nome();
+        this.dataDeInicio = dto.dataInicio();
+        this.dataDeFim = dto.dataFim();
     }
 
     public Long getCampeonatoId() {

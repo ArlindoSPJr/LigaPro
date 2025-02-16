@@ -1,6 +1,7 @@
 package com.example.SoccerGame.models;
 
 import com.example.SoccerGame.controller.dto.CreatePartidaDto;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -17,6 +18,11 @@ public class Partida {
     private LocalDate data;
 
     private LocalTime hora;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "campeonato_id")
+    @JsonBackReference //Colocada no lado "filho" da relação. Esse lado não será serializado, evitando o ciclo.
+    private Campeonato campeonato;
 
     public Partida() {}
 
