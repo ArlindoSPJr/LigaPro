@@ -6,6 +6,18 @@ meta {
 
 post {
   url: http://localhost:8080/campeonato
-  body: none
-  auth: none
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpc3MiOiJBZ2VuZGFtZW50b0NvbVNjaGVkdWxlIiwiaWQiOjEsImV4cCI6MTczOTcyMzMwOX0.9xIDUoIu-kE1mIM49kPoCgNT9oPnrCivBDSgAKssQyk
+}
+
+body:json {
+  {
+    "nome" : "varzea",
+    "dataInicio" : "2025-02-16",
+    "dataFim" : "2025-03-16"
+  }
 }

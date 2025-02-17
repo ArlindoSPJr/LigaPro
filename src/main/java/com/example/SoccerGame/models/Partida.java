@@ -1,10 +1,12 @@
 package com.example.SoccerGame.models;
 
 import com.example.SoccerGame.controller.dto.CreatePartidaDto;
+import com.example.SoccerGame.exceptions.ResourceNotFoundException;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
@@ -27,17 +29,18 @@ public class Partida {
     public Partida() {}
 
     public Partida(Time timeMandante, Time timeVisitante, CreatePartidaDto dto){
+
         this.timeMandante = timeMandante;
         this.timeVisitante = timeVisitante;
         this.data = dto.data();
         this.hora = dto.hora();
     }
 
-    public Partida(Time timeVisitante, Time timeMandante, LocalTime hora, LocalDate data) {
+    public Partida(Campeonato campeonato,Time timeVisitante, Time timeMandante, LocalTime hora, LocalDate data) {
+        this.campeonato = campeonato;
         this.timeVisitante = timeVisitante;
         this.timeMandante = timeMandante;
-        this.hora = hora;
-        this.data = data;
+        setDataHora(data, hora);
     }
 
     public Long getPartidaId() {
@@ -64,15 +67,21 @@ public class Partida {
         return timeVisitante;
     }
 
-    public void setTimeVisitante(Time timeVisitante) {
-        this.timeVisitante = timeVisitante;
-    }
-
     public Time getTimeMandante() {
         return timeMandante;
     }
 
-    public void setTimeMandante(Time timeMandante) {
-        this.timeMandante = timeMandante;
+
+    public void setDataHora(LocalDate data, LocalTime hora) {
+        LocalDateTime dataHoraPartida = LocalDateTime.of(data, hora);
+        LocalDateTime agora = LocalDateTime.now();
+
+        if (dataHoraPartida.isBefore(agora)) {
+            throw new ResourceNotFoundException("Data e hora inválidas: a partida não pode ser no passado.");
+        }
+
+        this.data = data;
+        this.hora = hora;
     }
+
 }

@@ -1,7 +1,6 @@
 package com.example.SoccerGame.controller;
 
 import com.example.SoccerGame.controller.dto.CreateCampeonatoDto;
-import com.example.SoccerGame.controller.dto.DetailingJogadorDto;
 import com.example.SoccerGame.controller.dto.DetailingoCampeonatoDto;
 import com.example.SoccerGame.models.Campeonato;
 import com.example.SoccerGame.service.CampeonatoService;
