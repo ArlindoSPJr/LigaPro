@@ -1,6 +1,7 @@
 package com.example.SoccerGame.models;
 
 import com.example.SoccerGame.controller.dto.CreateCampeonatoDto;
+import com.example.SoccerGame.exceptions.ResourceNotFoundException;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -64,4 +65,6 @@ public class Campeonato {
     public void setDataDeFim(LocalDate dataDeFim) {
         this.dataDeFim = dataDeFim;
     }
+
+
 }

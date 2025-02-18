@@ -38,8 +38,7 @@ public class Partida {
 
     public Partida(Campeonato campeonato,Time timeVisitante, Time timeMandante, LocalTime hora, LocalDate data) {
         this.campeonato = campeonato;
-        this.timeVisitante = timeVisitante;
-        this.timeMandante = timeMandante;
+        setTimeMandanteEVisitante(timeMandante, timeVisitante);
         setDataHora(data, hora);
     }
 
@@ -82,6 +81,14 @@ public class Partida {
 
         this.data = data;
         this.hora = hora;
+    }
+
+    public void setTimeMandanteEVisitante(Time timeMandante, Time timeVisitante) {
+        if (timeMandante.equals(timeVisitante)){
+            throw new ResourceNotFoundException("Os time mandante não pode ser o mesmo que o visitante");
+        }
+        this.timeMandante = timeMandante;
+        this.timeVisitante = timeVisitante;
     }
 
 }
